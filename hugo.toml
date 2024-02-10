@@ -1,0 +1,14 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'LiveAPI 2.0 Documentation'
+
+[module]
+    # uncomment line below for temporary local development of module
+    # or when using a 'theme' as a git submodule
+    replacements = "github.com/colinwilson/lotusdocs -> lotus"
+    [[module.imports]]
+        path = "github.com/colinwilson/lotusdocs"
+        disable = false
+    [[module.imports]]
+        path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+        disable = false
