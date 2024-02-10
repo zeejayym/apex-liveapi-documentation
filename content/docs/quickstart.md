@@ -1,297 +1,142 @@
 ---
 weight: 100
-date: "2023-05-03T22:37:22+01:00"
+date: "2024-02-10T22:37:22+01:00"
 draft: false
-author: "Colin Wilson"
-title: "Quickstart"
+author: "ZJ"
+title: "Quickstart Guide for LiveAPI 2.0 with Python"
 icon: "rocket_launch"
 toc: true
-description: "A quickstart guide to creating new content in Lotus Docs"
+description: "Get started with LiveAPI 2.0 using Python. This guide provides a comprehensive introduction to the LiveAPI 2.0 using Python."
 publishdate: "2023-05-03T22:37:22+01:00"
 tags: ["Beginners"]
 ---
 
+This guide provides a comprehensive introduction to using Apex Legends' LiveAPI 2.0 with Python, aimed at developers interested in building applications that interact with Apex Legends data in real-time.
+
+{{< alert context="info" text="This documentation is a work in progress, and we actively welcome contributions. If you have suggestions for improvements or new features, feel free to open a pull request on our GitHub repository. [Contribute here](https://www.github.com/zeejayym/live-api-documentation). We appreciate your input in making our documentation better for everyone." />}}
+
 ## Requirements
 
-- **git**
-- **Go ≥ v1.19**
-- **Hugo ≥ v0.100.0** (Extended Version)
+- **Python  ≥ 3.9**
+- **Apex Legends** 
 
-## Install Hugo
+Make sure you have Apex Legends installed on your device using the [EA app](https://www.ea.com/ea-app) or on [Steam](https://store.steampowered.com/app/1172470/Apex_Legends/) — we will not be covering the installation in this tutorial.
 
-Install the [Hugo CLI](https://github.com/gohugoio/hugo/releases/latest), using the specific instructions for your operating system below:
+## Install Python
 
-{{< tabs tabTotal="4">}}
-{{% tab tabName="Linux" %}}
+To install Python, follow the specific instructions for your operating system:
 
-Your Linux distro’s package manager may include Hugo. If this is the case, install it directly using your distro’s package manager – for instance, in Ubuntu, run the following command. This will install the extended edition of Hugo:
+1. Visit [Python's official downloads page](https://www.python.org/downloads/) to download the latest version of Python. Make sure to select a version that is 3.9 or higher, as indicated in the requirements.
+2. Run the downloaded installer. During the installation process, make sure to select the option to **Add Python to PATH**. This step is crucial as it allows you to run Python from the command line across various operating systems.
+3. Follow the rest of the installation prompts to complete the setup.
 
-```shell
-sudo apt install hugo
-```
-
-{{% /tab %}}
-{{% tab tabName="Homebrew (macOS)" %}}
-
-If you use the package manager [Homebrew](https://brew.sh/), run the `brew install` command in your terminal to install Hugo:
+After installation, you can verify that Python is correctly installed by opening your command line or terminal and entering:
 
 ```shell
-brew install hugo
+python --version
 ```
 
-{{% /tab %}}
-{{% tab tabName="Windows (Chocolatey)" %}}
+This command should return the Python version number that you installed. If you encounter any issues, refer to [Python's official installation guide](https://wiki.python.org/moin/BeginnersGuide/Download) for more detailed instructions and troubleshooting tips.
 
-If you use the package manager [Chocolatey](https://chocolatey.org/), run the `choco install` command in your terminal to install Hugo:
+
+
+
+### Setting up Your Development Environment
+
+{{< alert context="info" text="Note: If your project is already part of a git repository, you can further streamline your setup by initializing your virtual environment within your project's directory. This approach simplifies managing project dependencies alongside your code. For example, python -m venv .venv within your project directory keeps everything contained." />}}
+
+After installing Python, ensure you have pip (Python's package installer) by running:
 
 ```shell
-choco install hugo --confirm
+python -m ensurepip --upgrade
 ```
 
-{{% /tab %}}
-{{% tab tabName="Windows (Scoop)" %}}
-
-If you use the package manager [Scoop](https://scoop.sh/), run the `scoop install` command in your terminal to install Hugo:
+Create a virtual environment for your project to manage dependencies separately from other Python projects by running:
 
 ```shell
-scoop install hugo
+python -m venv /path/to/new/virtual/environment
 ```
+Replace /path/to/new/virtual/environment with the directory where you want to store your virtual environment.
 
-{{% /tab %}}
-{{< /tabs >}}
 
-### Manual Installation
 
-The Hugo GitHub repository contains pre-built versions of the Hugo command-line tool for various operating systems, which can be found on the [Releases page](https://github.com/gohugoio/hugo/releases/latest)
 
-For more instruction on installing these releases, refer to [Hugo’s documentation](https://gohugo.io/getting-started/installing/)
+### Activate Your Virtual Environment
 
-## Create a New Lotus Docs Site
-
-With Hugo installed, create a new Hugo project using the `hugo new` command:
-
-```shell
-hugo new site my-docs-site && cd my-docs-site
-```
-
-Now initialize your project as a Hugo Module using the `hugo mod init` command:
-
-```
-hugo mod init my-docs-site
-```
-
-{{% alert context="info" text="**Note**: If your site already has a git repository, you can initialise your site using the path to your site's git repository e.g. `hugo mod init github.com/<user>/<my-docs-site>/`." /%}}
-
-You can now choose your preferred method for adding the Lotus Docs theme to your new site from the options below:
+To activate the virtual environment, use the instructions specific to your operating system:
 
 {{< tabs tabTotal="3">}}
-{{% tab tabName="Add as a Hugo Module" %}}
+{{% tab tabName="macOS/Linux" %}}
+Replace `/path/to/new/virtual/environment` with the path to your virtual environment.
 
-Edit the `hugo.toml` configuration file to include the [Lotus Docs theme](https://github.com/colinwilson/lotusdocs) and the [Hugo Bootstrap module](https://github.com/gohugoio/hugo-mod-bootstrap-scss) (lines `5 to 11` below):
-
-```toml {linenos=table,hl_lines=["5-11"]}
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-
-[module]
-    [[module.imports]]
-        path = "github.com/colinwilson/lotusdocs"
-        disable = false
-    [[module.imports]]
-        path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
-        disable = false
-```
-{{% alert context="info" text="**Note**: Hugo ≥ v0.110.0 changed the name of the default config base filename to `hugo.toml`. If you're running an earlier version of Hugo, consider renaming your `config.toml` file to `hugo.toml`." /%}}
-
-{{% /tab %}}
-{{% tab tabName="Add as a Git submodule" %}}
-
-Initialize Git and clone the Lotus Docs theme repository as a submodule:
 
 ```shell
-git init
-git submodule add https://github.com/colinwilson/lotusdocs themes/lotusdocs
+source /path/to/new/virtual/environment/bin/activate
 ```
-
-Update your existing `hugo.toml` config file with the configuration below:
-
-```toml {linenos=table,hl_lines=["5-11"]}
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-
-[module]
-    [[module.imports]]
-        path = "lotusdocs"
-        disable = false
-    [[module.imports]]
-        path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
-        disable = false
-```
-
-{{% alert context="info" text="**Note**: Hugo ≥ v0.110.0 changed the name of the default config base filename to `hugo.toml`. If you're running an earlier version of Hugo, consider renaming your `config.toml` file to `hugo.toml`." /%}}
 
 {{% /tab %}}
-{{% tab tabName="Clone theme files" %}}
+{{% tab tabName="Windows (Command Prompt)" %}}
 
-In cases where you prefer to customise and maintain the Lotus Docs theme yourself, you can clone the theme into your project’s `themes` subdirectory.
-
-Run the following command from your project’s root directory to clone the Lotus Docs theme into your `themes` subdirectory:
+Replace `/path/to/new/virtual/environment` with the path to your virtual environment.
 
 ```shell
-git clone https://github.com/colinwilson/lotusdocs themes/lotusdocs
+/path/to/new/virtual/environment/Scripts/activate.bat
 ```
-
-Edit the `hugo.toml` configuration file to include the Lotus Docs theme and the Hugo Bootstrap module (lines `5 to 11` below):
-
-```toml {linenos=table,hl_lines=["5-11"]}
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-
-[module]
-    [[module.imports]]
-        path = "lotusdocs"
-        disable = false
-    [[module.imports]]
-        path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
-        disable = false
-```
-{{< alert context="info" text="**Note**: Hugo ≥ v0.110.0 changed the name of the default config base filename to `hugo.toml`. If you're running an earlier version of Hugo, consider renaming your `config.toml` file to `hugo.toml`." />}}
 
 {{% /tab %}}
+{{% tab tabName="Windows (PowerShell)" %}}
+
+Replace `/path/to/new/virtual/environment` with the path to your virtual environment.
+
+```shell
+/path/to/new/virtual/environment/Scripts/Activate.ps1
+```
+
+{{% /tab %}}
+
 {{< /tabs >}}
 
-## Create New Content
+Once activated, the name of your virtual environment, indicated by its folder name in parentheses (e.g., `(myenv)`), should now appear before your shell's prompt, identifying that the virtual environment is currently in use.
 
-Navigate to the root of your Hugo project and use the `hugo new` command to create a file in the `content/docs` directory:
+### Install Dependencies
 
-```shell
-hugo new docs/example-page.md
-```
+To utilize the WebSockets API, you must install the necessary Python packages. Execute the following command in your activated virtual environment to install the `websockets` library along with `asyncio`, which is likely already included with your Python installation:
 
-This will create a markdown file named `example-page.md` with the following default front matter:
-
-```toml
-+++
-title = "Example Page"
-description = ""
-icon = "article"
-date = "2023-05-22T00:27:57+01:00"
-lastmod = "2023-05-22T00:27:57+01:00"
-draft = false
-toc = true
-weight = 999
-+++
-```
-
-Modify the options to suit your needs.
-
-The code below shows the front matter code used to create this page, along with a portion of markdown from the body:
-
-{{< prism lang="md" >}}
-+++
-weight = 100
-date = "2023-05-03T22:37:22+01:00"
-draft = true
-author = "Colin Wilson"
-title = "Quickstart"
-icon = "rocket_launch"
-toc = true
-description = "A quickstart guide to creating new content in Lotus Docs"
-publishdate = "2023-05-03T22:37:22+01:00"
-tags = ["Beginners"]
-+++
-
-## Create New Content
-
-Navigate to the root of your Hugo project and use the `hugo new` command to create a file in the `content/docs` directory:
 
 ```shell
-hugo new docs/examplepage.md
-```
-...
-{{< /prism >}}
-
-## Preview your Site
-
-Now that you've created some sample content you can preview your new Lotus Docs site using the `huge server` command:
-
-```shell
-hugo server -D
+(myenv) python -m pip install asyncio websockets
 ```
 
-Navigate to `localhost:1313/docs` and you should see a card link to the **Example Page** created earlier:
+### Next Steps
 
-![New Lotus Docs Site - Example Content](https://res.cloudinary.com/lotuslabs/image/upload/v1690992310/Lotus%20Docs/images/lotus_docs_new_site_and_content_module_setup_oiuyex.png)
+Respawn has provided a sample python code in order to help get developers started.
 
-## Ordering Content
+%USER
 
-Lotus Docs uses a simple weighting method for ordering content and creating menus.
+```py {linenos=table,lines=["1-24"]}
+# generate the protobuf bindings by doing `protoc events.proto --python_out='.'`
+# before running, do `python -m pip install asyncio websockets`
 
-The front matter `weight` variable is used to order all content and auto-generate the menu structure (including the sidebar menu and page navigation buttons). Lower weight values take higher precedence. So content with lower weights come first and are so ordered in the menu.
+import asyncio
+import socket
+import websockets
+from events_pb2 import *
 
-## Auto-Generated Menu
+async def repl( websocket ):
+    print("Connected!")
 
-As mentioned, Lotus Docs auto-generates menus and navigation links using the [front matter](https://gohugo.io/content-management/front-matter/#predefined) weight variable. For example, Navigate to the `content/docs` directory and create two content files, `doc-one.md` and `doc-two.md`, then edit the weight values to `100` and `200` respectively:
+    async for message in websocket:
+        try:
+            incoming = LiveAPIEvent()
+            incoming.ParseFromString( message )
+            print( incoming )
+        except:
+            print( message )
 
-{{< alert text="It's good practice to increment the weight of your posts by a factor of <code>100</code>. This ensures plenty of room to insert new posts between existing items should you need to." />}}
+async def main():
+    async with websockets.serve(repl, "localhost", 7777):
+        await asyncio.Future()  # run forever on port 7777
 
-Your directory structure should now look like this:
-
-```treeview
-content/
-└── docs/
-    ├── doc-one.md
-    └── doc-two.md
+asyncio.run(main()) 
 ```
 
-Links to both posts are now visible in the sidebar menu where `doc-one.md` will come before and be placed above `doc-two.md`:
-
-![sidebar menu items example](https://res.cloudinary.com/lotuslabs/image/upload/v1684719173/Lotus%20Docs/images/sidebar_menu_example_01-modified_qkb2si.png)
-
-{{< alert context="info" text="The option to manually configure a predefined menu structure in <code>hugo.toml</code> as opposed to an auto-generated one is part of the Lotus Docs roadmap." />}}
-
-## Second Level Menu Items
-
-Second level menu items can be generated by first creating a **'parent'** directory containing an `_index.md` file, e.g.:
-
-```shell
-hugo new docs/parent-directory/_index.md
-```
-
-The above command creates an `_index.md` file inside a directory named `parent-directory` under `content/docs`:
-
-```treeview
-content/
-└── docs/
-    ├── parent-directory/
-    │   └── _index.md
-    ├── doc-one.md
-    ├── doc-two.md
-    └── _index.md
-```
-
-You can now create second level items inside the `parent-directory` as normal. Run the `hugo new` command again to create a post inside the newly created `parent-directory`:
-
-```shell
-hugo new docs/parent-directory/doc-three.md
-```
-
-Your directory/file structure should now look like this:
-
-```treeview
-content/
-└── docs/
-    ├── parent-directory/
-    │   ├── _index.md
-    │   └── doc-three.md
-    ├── doc-one.md
-    ├── doc-two.md
-    └── _index.md
-```
-
-This is reflected in the sidebar menu with `parent-directory` functioning as a dropdown menu containing a link to the **Doc Three** post:
-
-![sidebar parent menu example](https://res.cloudinary.com/lotuslabs/image/upload/v1684802032/Lotus%20Docs/images/sidebar_menu_example_02_jsecye.png)
