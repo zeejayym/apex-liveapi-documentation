@@ -37,7 +37,7 @@ hero:
   cta2Button:
     icon: construction
     btnText: "Contribute"
-    url: "https://github.com/zeejayym/apex-live-api-documentation"
+    url: "https://github.com/zeejayym/apex-liveapi-documentation"
 
   info: "**Open Source** - Dive into the Unofficial Apex Legends LiveAPI Documenation 2.0"
 
