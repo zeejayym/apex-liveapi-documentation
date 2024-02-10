@@ -1,6 +1,6 @@
 module github.com/colinwilson/lotusdocs/exampleSite
 
-go 1.22.0
+go 1.23
 
 require (
 	github.com/colinwilson/lotusdocs v0.0.0-20230915145608-8bab2d130c1e // indirect
