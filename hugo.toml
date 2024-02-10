@@ -13,7 +13,7 @@ title = 'LiveAPI 2.0 Documentation'
         path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
         disable = false
 
-[params.docs]
+[params.docs]	
     darkMode = true
     title = "LiveAPI 2.0 Documentation"
     editPage = true
@@ -22,6 +22,8 @@ title = 'LiveAPI 2.0 Documentation'
     themeColor = "blue"
     prism = true
     sidebarIcons = true
+    titleIcon = true
+    logoLinkURL = "/docs"
 
 [params.footer]
     copyright = "Built by zeejayym. Powered by Hugo and lotusdocs."
