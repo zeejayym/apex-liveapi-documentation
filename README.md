@@ -1,24 +1,77 @@
-# Lotus Docs Example Site
+# LiveAPI Documentation
 
-This repository offers a multilingual example site using the [Lotus Docs](https://github.com/colinwilson/lotusdocs) Hugo theme.
+Welcome to the unofficial **LiveAPI Documentation** repository. This documentation site is built with [Hugo](https://gohugo.io/), utilizing the [Lotus Docs](https://github.com/colinwilson/lotusdocs) theme for a streamlined, intuitive documentation experience that supports multilingual content.
 
-# Using
+## Getting Started
 
-1. [Install Hugo](https://gohugo.io/overview/installing/)
-2. Clone this repository
+Follow these instructions to set up a local development environment and contribute to the LiveAPI Documentation.
 
-    ```bash
-    $ git clone --depth 1 https://github.com/colinwilson/lotusdocs lotusdocs
-    $ cd lotusdocs/exampleSite
-    ```
-3. Run Hugo server.
+### Prerequisites
 
-    ```bash
-    $ hugo server
-    ```
-## Notes:
+- [Hugo](https://gohugo.io/overview/installing/) must be installed on your system. For installation instructions, see the [official Hugo documentation](https://gohugo.io/overview/installing/).
 
-The `exampleSite` functions by using the Hugo [`replace`](https://gohugo.io/hugo-modules/use-modules/#make-and-test-changes-in-a-module) directive (in [`go.mod`](go.mod#L10)) to point the default `lotusdocs` module path, `github.com/colinwilson/lotusdocs`, to the local directory above where the theme is cloned:
+### Installation
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone --depth 1 https://github.com/YourGitHubUsername/liveapi-documentation liveapi-documentation
+   cd liveapi-documentation
+   ```
+
+   Replace `YourGitHubUsername` with the actual username or organization name under which the repository is hosted.
+
+2. **Run Hugo Server:**
+
+   ```bash
+   hugo server
+   ```
+
+   This command starts a local web server. Open `http://localhost:1313` in your browser to view the documentation.
+
+## Contributing
+
+We welcome contributions to the LiveAPI Documentation! To contribute:
+
+1. **Fork the Repository:** Start by forking the LiveAPI Documentation repository to your GitHub account.
+
+2. **Clone Your Fork:**
+
+   ```bash
+   git clone https://github.com/YourUsername/liveapi-documentation
+   cd liveapi-documentation
+   ```
+
+3. **Create a New Branch:**
+
+   ```bash
+   git checkout -b your-branch-name
+   ```
+
+   Use a descriptive name for your branch (`your-branch-name`) based on the changes you intend to make.
+
+4. **Make Your Changes:** Add or edit content as needed.
+
+5. **Commit Your Changes:**
+
+   ```bash
+   git add .
+   git commit -m "A descriptive message about your changes"
+   ```
+
+6. **Push to Your Fork:**
+
+   ```bash
+   git push origin your-branch-name
+   ```
+
+7. **Open a Pull Request:** Navigate to the original `liveapi-documentation` repository you forked. You'll see a prompt to open a pull request. Fill in the details, explaining the changes you've made.
+
+8. **Await Review:** Your pull request will be reviewed by the maintainers, and if everything is in order, it will be merged into the main documentation.
+
+### Development Notes
+
+The documentation site uses the Lotus Docs theme as a submodule. Local development is supported by Hugo's module system, specifically the `replace` directive in the `go.mod` file, allowing direct theme modifications:
 
 ```go
 // go.mod
@@ -26,3 +79,10 @@ The `exampleSite` functions by using the Hugo [`replace`](https://gohugo.io/hugo
 
 replace github.com/colinwilson/lotusdocs => ../
 ```
+
+## Acknowledgments
+
+- **Hugo**: For powering our documentation site. More about Hugo can be found [here](https://gohugo.io/).
+- **Lotus Docs Theme**: For the beautiful theme design. Thanks to [Colin Wilson](https://github.com/colinwilson) and all contributors. Visit the theme [here](https://github.com/colinwilson/lotusdocs).
+
+---
