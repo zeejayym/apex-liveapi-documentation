@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = '/'
 languageCode = 'en-us'
 title = 'LiveAPI 2.0 Documentation'
 
@@ -12,3 +12,20 @@ title = 'LiveAPI 2.0 Documentation'
     [[module.imports]]
         path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
         disable = false
+
+[params.docs]
+    darkMode = true
+    title = "LiveAPI 2.0 Documentation"
+    editPage = true
+    repoURL = "https://github.com/zeejayym/liveapi-documentation"
+    lastMod = true
+    themeColor = "blue"
+    prism = true
+    sidebarIcons = true
+
+[params.footer]
+    copyright = "Built by zeejayym. Powered by Hugo and lotusdocs."
+
+[params.social]
+    github = "zeejayym"
+    twitter = "zeejayym"
