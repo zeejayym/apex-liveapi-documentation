@@ -1,13 +1,15 @@
 ---
-title: "Code"
-description: "Code block examples in different coding languages"
+title: "MatchInformation"
+description: ""
 icon: "code"
 date: "2023-05-22T00:44:31+01:00"
 lastmod: "2023-05-22T00:44:31+01:00"
 draft: false
 toc: true
-weight: 210
+weight: 230
 ---
+
+{{% alert context="warning" text="The front matter `description` value for this page has been intentionally left empty in order to demonstrate FlexSearch's suggested results fallback behaviour." /%}}
 
 ## Code Block Examples
 
