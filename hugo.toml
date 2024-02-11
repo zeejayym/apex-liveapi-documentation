@@ -26,7 +26,7 @@ title = 'LiveAPI 2.0 Documentation'
 
 
 [params.footer]
-    copyright = "Built by zeejayym. Powered by Hugo and lotusdocs."
+    copyright = "Built by zeejayym. Not affiliated with EA or Respawn Entertainment. Powered by Hugo and lotusdocs."
 
 [params.social]
     github = "zeejayym"
