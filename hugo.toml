@@ -1,9 +1,13 @@
 baseURL = 'https://apexliveapi.com/'
 languageCode = 'en-us'
 title = 'LiveAPI 2.0 Documentation'
+enableEmoji = true
+enableGitInfo = true
 
 [params]
     ghrepo = "https://github.com/zeejayym/apex-liveapi-documentation" 
+    ghbranch = "master"
+
 [module]
     # uncomment line below for temporary local development of module
     # or when using a 'theme' as a git submodule
@@ -18,11 +22,13 @@ title = 'LiveAPI 2.0 Documentation'
 [params.docs]	
     darkMode = true
     title = "LiveAPI 2.0 Documentation"
+
     repoURL = "https://github.com/zeejayym/apex-liveapi-documentation"
     repoBranch = "master"
+    editPage = true
+
     lastMod = true
     themeColor = "blue"
-    editPage = true
     prism = true
     sidebarIcons = true
     titleIcon = true
