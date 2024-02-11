@@ -99,11 +99,11 @@ Once activated, the name of your virtual environment, indicated by its folder na
 
 ### Install Dependencies
 
-To utilize the WebSockets API, you must install the necessary Python packages. Execute the following command in your activated virtual environment to install the `websockets` library along with `asyncio`, which is likely already included with your Python installation:
+To utilize the WebSockets API, you must install the necessary Python packages. Execute the following command in your activated virtual environment to install the `websockets` library along with `asyncio` and `protobuf`, which is likely already included with your Python installation:
 
 
 ```shell
-python -m pip install asyncio websockets
+python -m pip install asyncio websockets protobuf
 ```
 
 ## Next Steps with Apex Legends LiveAPI
@@ -180,7 +180,7 @@ Then proceed to installation:
 
 
 ```shell
-protoc --proto_path=<LiveAPI directory> --python_out=<target directory> events.proto
+protoc --proto_path="<LiveAPI directory>" --python_out="<target directory>" events.proto
 ```
 
 Replace `<LiveAPI directory>` and `<target directory>` with the appropriate paths.
