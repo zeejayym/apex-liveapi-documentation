@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://apexliveapi.com/'
 languageCode = 'en-us'
 title = 'LiveAPI 2.0 Documentation'
 
