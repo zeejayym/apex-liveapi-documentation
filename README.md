@@ -21,7 +21,13 @@ Follow these instructions to set up a local development environment and contribu
 
    Replace `YourGitHubUsername` with the actual username or organization name under which the repository is hosted.
 
-2. **Run Hugo Server:**
+2. **Add the Custom Lotus Submodule:**
+
+   ```bash
+   git submodule add https://github.com/zeejayym/lotusdocs.git themes/lotusdocs
+   git submodule update --init --recursive
+   ```
+3. **Run Hugo Server:**
 
    ```bash
    hugo server
@@ -43,10 +49,10 @@ We welcome contributions to the LiveAPI Documentation! To contribute:
    ```
 3. **Add the Custom Lotus Submodule:**
 
-```bash
-git submodule add https://github.com/zeejayym/lotusdocs.git themes/lotusdocs
-git submodule update --init --recursive
-```
+   ```bash
+   git submodule add https://github.com/zeejayym/lotusdocs.git themes/lotusdocs
+   git submodule update --init --recursive
+   ```
 
 4. **Create a New Branch:**
 
@@ -59,11 +65,11 @@ git submodule update --init --recursive
 5. **Make Your Changes:** Add or edit content as needed.
 
 6. **Commit Your Changes:**
-Please use the [commitizen](https://github.com/commitizen/cz-cli) if you're unfamiliar with commiting!
+   Please use the [commitizen](https://github.com/commitizen/cz-cli) if you're unfamiliar with commiting!
 
    ```bash
    git add .
-   git commit -m "A descriptive message about your changes"
+   git commit -m "feat: A descriptive message about your changes"
    ```
 
 1. **Push to Your Fork:**
