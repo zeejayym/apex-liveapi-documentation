@@ -6,12 +6,14 @@ author: "ZJ"
 title: "Quickstart Guide for Apex Legends LiveAPI 2.0 with Python"
 icon: "rocket_launch"
 toc: true
-description: "Get started with LiveAPI 2.0 using Python. This guide provides a comprehensive introduction to the LiveAPI 2.0 using Python."
+description: "Get started with LiveAPI 2.0. This guide provides a comprehensive introduction to the LiveAPI 2.0 using Python."
 publishdate: "2023-05-03T22:37:22+01:00"
 tags: ["Beginners"]
 ---
 
-This guide provides a comprehensive introduction to using Apex Legends' LiveAPI 2.0 with Python, aimed at developers interested in building applications that interact with Apex Legends data in real-time.
+{{< alert context="info" text="**Note from the Author:** For experienced developers, adapting this guide to your preferred programming language should be straightforward. This resource is primarily aimed at helping beginners get started. Much of the information is available in `LiveAPI/readme.txt` within your Apex Legends installation directory, but here we provide additional depth and context." />}}
+
+This guide provides a comprehensive introduction to using Apex Legends' LiveAPI 2.0 with Python, aimed at developers interested in building applications that interact with Apex Legends data in real-time. 
 
 {{< alert context="info" text="This documentation is a work in progress, and we actively welcome contributions. If you have suggestions for improvements or new features, feel free to open a pull request on our GitHub repository. [Contribute here](https://www.github.com/zeejayym/liveapi-documentation). We appreciate your input in making our documentation better for everyone." />}}
 
@@ -27,9 +29,9 @@ Make sure you have Apex Legends installed on your device using the [EA app](http
 
 To install Python, follow the specific instructions for your operating system:
 
-1. Visit [Python's official downloads page](https://www.python.org/downloads/) to download the latest version of Python. Make sure to select a version that is 3.9 or higher, as indicated in the requirements.
-2. Run the downloaded installer. During the installation process, make sure to select the option to **Add Python to PATH**. This step is crucial as it allows you to run Python from the command line across various operating systems.
-3. Follow the rest of the installation prompts to complete the setup.
+  1. Visit [Python's official downloads page](https://www.python.org/downloads/) to download the latest version of Python. Make sure to select a version that is 3.9 or higher, as indicated in the requirements.
+1. Run the downloaded installer. During the installation process, make sure to select the option to **Add Python to PATH**. This step is crucial as it allows you to run Python from the command line across various operating systems.
+2. Follow the rest of the installation prompts to complete the setup.
 
 After installation, you can verify that Python is correctly installed by opening your command line or terminal and entering:
 
