@@ -41,8 +41,14 @@ We welcome contributions to the LiveAPI Documentation! To contribute:
    git clone https://github.com/YourUsername/liveapi-documentation
    cd liveapi-documentation
    ```
+3. **Add the Custom Lotus Submodule:**
 
-3. **Create a New Branch:**
+```bash
+git submodule add https://github.com/zeejayym/lotusdocs.git themes/lotusdocs
+git submodule update --init --recursive
+```
+
+4. **Create a New Branch:**
 
    ```bash
    git checkout -b your-branch-name
@@ -50,24 +56,25 @@ We welcome contributions to the LiveAPI Documentation! To contribute:
 
    Use a descriptive name for your branch (`your-branch-name`) based on the changes you intend to make.
 
-4. **Make Your Changes:** Add or edit content as needed.
+5. **Make Your Changes:** Add or edit content as needed.
 
-5. **Commit Your Changes:**
+6. **Commit Your Changes:**
+Please use the [commitizen](https://github.com/commitizen/cz-cli) if you're unfamiliar with commiting!
 
    ```bash
    git add .
    git commit -m "A descriptive message about your changes"
    ```
 
-6. **Push to Your Fork:**
+1. **Push to Your Fork:**
 
    ```bash
    git push origin your-branch-name
    ```
 
-7. **Open a Pull Request:** Navigate to the original `liveapi-documentation` repository you forked. You'll see a prompt to open a pull request. Fill in the details, explaining the changes you've made.
+2. **Open a Pull Request:** Navigate to the original `liveapi-documentation` repository you forked. You'll see a prompt to open a pull request. Fill in the details, explaining the changes you've made.
 
-8. **Await Review:** Your pull request will be reviewed by the maintainers, and if everything is in order, it will be merged into the main documentation.
+3.  **Await Review:** Your pull request will be reviewed by the maintainers, and if everything is in order, it will be merged into the main documentation.
 
 ### Development Notes
 
