@@ -82,17 +82,6 @@ We welcome contributions to the LiveAPI Documentation! To contribute:
 
 3.  **Await Review:** Your pull request will be reviewed by the maintainers, and if everything is in order, it will be merged into the main documentation.
 
-### Development Notes
-
-The documentation site uses the Lotus Docs theme as a submodule. Local development is supported by Hugo's module system, specifically the `replace` directive in the `go.mod` file, allowing direct theme modifications:
-
-```go
-// go.mod
-...
-
-replace github.com/colinwilson/lotusdocs => ../
-```
-
 ## Acknowledgments
 
 - **Hugo**: For powering our documentation site. More about Hugo can be found [here](https://gohugo.io/).
