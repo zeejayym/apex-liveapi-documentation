@@ -117,6 +117,8 @@ This message is sent upon successfully connecting over WebSockets
 
 ## LoadoutConfiguration
 
+{{< alert context="success" text="**Important Update**: `LoadoutConfiguration` was introduced in the Season 20 update on 2/13/2024." />}}
+
 {{< table "table-striped-columns" >}}
 
 | Field Name | Type             | Tag | Description                                                      |
