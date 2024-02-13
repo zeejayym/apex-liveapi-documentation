@@ -6,7 +6,7 @@ date: "2024-02-10T00:44:31+01:00"
 lastmod: "2024-02-10T00:44:31+01:00"
 draft: false
 toc: true
-weight: 249
+weight: 240
 ---
 
 ## Events
@@ -15,39 +15,30 @@ weight: 249
 
 ### observerSwitched
 
-- **Description**: Called when the player switches to another observer target.
+Event when the observer camera switches from viewing one player to another
 
-- **Note**: `targetTeam` will list all players on that team.
+{{< table "table-striped-columns" >}}
 
-- **Schema**:
+| Field Name   | Type          | Tag | Description                                                                  |
+|--------------|---------------|-----|------------------------------------------------------------------------------|
+| `timestamp`    | uint64        | 1   | The timestamp when the observer camera switch occurred.                      |
+| `category`     | string        | 2   | The category of the event, e.g., "observer_switched".                        |
+| `observer`     | Player        | 3   | The observer who is switching the view.                                      |
+| `target`       | Player        | 4   | The new target player that the observer camera is switching to.              |
+| `targetTeam`   | Player[]      | 5   | A list of `Player` objects representing the team of the new target player.   |
 
-  ```json
-  {
-    "observer": {
-        "type": "object",
-        "properties":
-        {
-            "object": {"type": "player"},
-        }
-    },
-    "target": {
-        "type": "object",
-        "properties":
-        {
-            "object": {"type": "player"},
-        }
-    },
-    "targetTeam": {
-        "type": "array",
-        "object": {"type": "player"}
-    },
-    "timestamp": {"type": "number"},
-    "category": "observerSwitched"
-  },
-  ```
+{{< /table >}}
 
-- **Example:**
+### ObserverAnnotation
 
-```json
-{"observer":{"name":"unnamed","teamId":1,"pos":{"x":-4599.63,"y":1747,"z":-6074.25},"angles":{"x":0,"y":0,"z":0},"squadIndex":0,"teamName":"Spectator","character":"Bloodhound","skin":"Original"},"target":{"name":"AntimonyAsp","teamId":8,"pos":{"x":-23004,"y":19100.6,"z":-6327},"angles":{"x":0,"y":126.475,"z":0},"squadIndex":0,"teamName":"Team07","character":"Bangalore","skin":"CrimsonQueen"},"timestamp":1638392421,"category":"observerSwitched"},
-```
+Used by observers to annotate events uniquely
+
+{{< table "table-striped-columns" >}}
+
+| Field Name        | Type   | Tag | Description                                                      |
+|-------------------|--------|-----|------------------------------------------------------------------|
+| `timestamp`         | uint64 | 1   | The timestamp when the annotation was made.                      |
+| `category`          | string | 2   | The category of the event, e.g., "observer_annotation".          |
+| `annotationSerial`  | int32  | 3   | A serial number uniquely identifying the annotation event.       |
+
+{{< /table >}}

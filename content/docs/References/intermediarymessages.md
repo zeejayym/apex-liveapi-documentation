@@ -103,6 +103,8 @@ This message is sent upon successfully connecting over WebSockets
 
 ## InventoryItem
 
+{{< alert context="success" text="**Important Update**: `InventoryItem` was introduced in the Season 20 update on 2/13/2024." />}}
+
 {{< table "table-striped-columns" >}}
 
 | Field Name | Type   | Tag | Description                                     |
@@ -126,7 +128,7 @@ This message is sent upon successfully connecting over WebSockets
 
 
 ## CustomMatch_LobbyPlayers
-Response to the CustomMatch_GetLobbyPlayers, contains the list of all players in the lobby.
+Response to the `CustomMatch_GetLobbyPlayers`, contains the list of all players in the lobby.
 
 {{< table "table-striped-columns" >}}
 

@@ -6,235 +6,185 @@ date: "2024-02-10T00:44:31+01:00"
 lastmod: "2024-02-10T00:44:31+01:00"
 draft: false
 toc: true
-weight: 230
+weight: 200
 ---
 ## Events
 
 {{< alert context="info" text="This documentation is a work in progress, and we actively welcome contributions. If you have suggestions for improvements or new features, feel free to open a pull request on our GitHub repository. [Contribute here](https://www.github.com/zeejayym/liveapi-documentation). We appreciate your input in making our documentation better for everyone." />}}
 
-### matchSetup
+### MatchSetup
 
-- **Description**: Prints list of match information on match start
+Sent during the first phase of a match. This event gives a full description of what match is being played.
+  
+{{< alert context="success" text="**Important Update**: `MatchSetup.startingLoadout`  was introduced in the Season 20 update on 2/13/2024." />}}
 
-- **Note**: `targetTeam` will list all players on that team.
+  {{< table "table-striped-columns" >}}
 
-- **Schema**:
+  | Field Name     | Type         | Tag | Description                              |
+  |----------------|--------------|-----|------------------------------------------|
+  | `timestamp`      | uint64       | 1   | The timestamp when the match starts.     |
+  | `category`       | string       | 2   | The category of the match setup event.   |
+  | `map`            | string       | 3   | The map where the match is taking place. |
+  | `playlistName`   | string       | 4   | The name of the playlist.                |
+  | `playlistDesc`   | string       | 5   | The description of the playlist.         |
+  | `datacenter`     | Datacenter   | 6   | Datacenter information.                  |
+  | `aimAssistOn`    | bool         | 7   | Indicates if aim assist is enabled.      |
+  | `serverId`       | string       | 8   | The server ID.                           |
+  | `startingLoadout` | LoadoutConfiguration | 10 | |
+  {{< /table >}}
 
-  ```json
-  {
-    "map": {"type": "string"},
-    "playlistName": {"type": "string"},
-    "playlistDesc": {"type": "string"},
-    "datacenter": 
-      {
-        "name": {"type": "string"}
-      }
-    ,
-    "aimAssistOn": {"type": "boolean"},
-    "serverId": {"type": "number"},
-    "timestamp": {"type": "number"},
-    "category": "matchSetup"
-  },
-  ```
+  **Datacenter Message Fields**
 
-- **Example:**
+{{< table "table-striped-columns" >}}
 
-```json
-{"map":"mp_rr_olympus_mu1","playlistName":"Olympus(Season9)","playlistDesc":"Fighttobethelastsquadstanding.","datacenter":{"name":"westus"},"aimAssistOn":true,"serverId":"838911:1000:00000000","timestamp":1638392356,"category":"matchSetup"},
-```
+| Field Name     | Type         | Tag | Description                    |
+|----------------|--------------|-----|--------------------------------|
+| `name`         | string       | 1   | The name of the datacenter.    |
 
-### gameStateChanged
+{{< /table >}}
 
-- **Description**: Called when, waiting for player, character select, match start, resolution, match end.
+### GameStateChanged
 
-- **Schema**:
-
-  ```json
-  {
-    "state": {"type": "string"},
-    "timestamp": {"type": "number"},
-    "category": "gameStateChanged"
-  },
-  ```
-
-- **Example:**
-
-```json
-{"state":"PickLoadout","timestamp":1638392379,"category":"gameStateChanged"},
-```
-
-### characterSelected
-
-- **Description**: Called during character select.
-
-- **Schema**:
-
-  ```json
-  {
-    "player":{
-     "type": "object",
-     "properties":
-      {
-        "object": {"type": "player"}
-      }
-    },
-    "timestamp": {"type": "number"},
-    "category": "characterSelected"
-  },
-
-  ```
-
-- **Example:**
-
-```json
-{"player":{"name":"StrontiumSquirrel","teamId":21,"pos":{"x":-4599.63,"y":1747,"z":-6074.25},"angles":{"x":0,"y":0,"z":0},"squadIndex":0,"teamName":"Team20","character":"Seer","skin":"Wishbone"},"timestamp":1638392385,"category":"characterSelected"},
-```
-
-### matchStateEnd
-
-- **Description**: Winner names separated by comma.
-
-- **Schema**:
-
-  ```json
-  {
-    "state": "WinnerDetermined",
-    "winners": { 
-     "type": "array",
-     "object": {"type": "player"}
-     },
-    "timestamp": {"type": "number"},
-    "category": "matchStateEnd"
-  },
-
-  ```
-
-- **Example:**
-
-```json
-{"state":"WinnerDetermined","winners":[{"name":"BotAPZincZebra","teamId":10,"pos":{"x":-4078.81,"y":-10303.9,"z":-4095.95},"angles":{"x":0,"y":-139.746,"z":0},"teamName":"Team9","squadIndex":2,"nucleusHash":"22686ffa854e16ef7655c417d6bd994eac96a0f390065e74072e693c61703f12249c50d0dd34da80427b9ddfeba6cfc8016f1ef9ee9294fd89a8bf43ac494746","character":"MadMaggie","skin":"Snakeskin"},{"name":"BotAPLivermoriumLeech","teamId":10,"pos":{"x":4564.75,"y":-17402.4,"z":-3401},"angles":{"x":0,"y":-56.6455,"z":0},"teamName":"Team9","squadIndex":1,"nucleusHash":"f0b2e9d56100ed8bc9202216ae69f1dbf995fbcd8456a565479d9d3bfd5fe9a777a7bd5ddb1e069342b64137436467ef3445fbea132a7edc05172af2cebee14e","character":"Seer","skin":"Limelight"},{"name":"BotAPLanthanumLoon","teamId":10,"pos":{"x":4564.75,"y":-17402.4,"z":-3401},"angles":{"x":0,"y":-103.887,"z":0},"teamName":"Team9","squadIndex":0,"nucleusHash":"fa7e56bc4c966d656cd9817706c66848644d69051f7bdf71605d5d81002bb7d6455f35d288e8e6c7cb125cf8118f9d77c4911d05b6e1451e7b6ded04a97d074c","character":"Gibraltar","skin":"Bloodline"}],"timestamp":1646863807,"category":"matchStateEnd"},
-
-```
+Sent whenever the match changes phases (e.g., prematch, playing).
 
 
-### ringStartClosing
+{{< table "table-striped-columns" >}}
 
-- **Description**: Called when the circle starts closing.
+| Field Name | Type   | Tag | Description                                     |
+|------------|--------|-------|-------------------------------------------------|
+| `timestamp`  | uint64 | 1   | The timestamp when the game state changed.      |
+| `category`   | string | 2   | The category of the game state change event.    |
+| `state`      | string | 3   | The new state of the game after the change.     |
 
-- **Schema**:
+{{< /table >}}
 
-  ```json
-  {
-    "stage": {"type": "number"},
-    "timestamp": {"type": "number"},
-    "category": "ringStartClosing"
-  },
-  ```
+### CharacterSelected
 
-- **Example:**
+Occurs when any player has locked in a character during legend select.
 
-```json
-{"stage":0,"timestamp":1638392668,"category":"ringStartClosing"},
-```
+{{< table "table-striped-columns" >}}
 
-### ringFinishedClosing
+| Field Name | Type   | Tag | Description                                                       |
+|------------|--------|-----|-------------------------------------------------------------------|
+| `timestamp`  | uint64 | 1   | The timestamp when the character was selected.                    |
+| `category`   | string | 2   | The category of the event, e.g., "character_selected".            |
+| `player`     | Player | 3   | The player who has selected a character.                          |
 
-- **Description**: Called when the circle closes.
-
-- **Schema**:
-
-  ```json
-  {
-    "stage": {"type": "number"},
-    "timestamp": {"type": "number"},
-    "category": "ringFinishedClosing"
-  },
-  ```
-
-- **Example:**
-
-```json
-{"stage":0,"timestamp":1638392668,"category":"ringFinishedClosing"},
-```
-
-### playerConnected
-
-- **Description**: Called when a player connects to the server.
-
-- **Schema**:
-  ```json
-  {
-    "player": {
-     "type": "object",
-     "properties":
-      {
-       "object": {"type": "player"}
-      }
-    },
-    "timestamp":  {"type": "number"},
-    "category": "playerConnected"
-  },
-  ```
-
-- **Example:**
-
-```json
-{"player":{"name":"AntimonyAsp","teamId":8,"pos":{"x":-4599.63,"y":1747,"z":-6074.25},"angles":{"x":0,"y":0,"z":0},"squadIndex":0,"teamName":"Team07"},"timestamp":1638392355,"category":"playerConnected"},
-```
-
-### playerDisconnected
-
-- **Description**: Called when a player leaves the server..
-
-- **Schema**:
-  ```json
-  {
-    "player": {
-     "type": "object",
-     "properties":
-      {
-       "object": {"type": "Player"}
-      }
-    },
-    "timestamp":  {"type": "number"},
-    "category": "playerDisconnected"
-  },
-  ```
-
-- **Example:**
-
-```json
-{"player":{"name":"ArgonAnteater","teamId":7,"pos":{"x":-4599.63,"y":1747,"z":-6074.25},"angles":{"x":0,"y":107.666,"z":0},"squadIndex":0,"character":"Gibraltar","skin":"Shell-Shocked"},"timestamp":1638393256,"category":"playerDisconnected"},
-
-```
+{{< /table >}}
 
 
-### playerStatChanged
+### MatchStateEnd
 
-- **Description**: Called when a players stat has been updated.
+Event to summarize the match after it has ended.
 
-- **Notes**: Tracks changes in kills, assists, revives given and respawns given
+{{< table "table-striped-columns" >}}
 
-- **Schema**:
-  ```json
-  {
-    "player": {
-     "type": "object",
-     "properties":
-      {
-       "object": {"type": "Player"}
-      }
-    },
-    "statName":  {"type": "string"},
-    "newValue":  {"type": "number"},
-    "timestamp":  {"type": "number"},
-    "category": "playerStatChanged"
-  },
-  ```
+| Field Name | Type     | Tag | Description                                                    |
+|------------|----------|-----|----------------------------------------------------------------|
+| `timestamp`  | uint64   | 1   | The timestamp when the match ended.                            |
+| `category`   | string   | 2   | The category of the event, e.g., "match_state_end".            |
+| `state`      | string   | 3   | The final state of the match.                                  |
+| `winners`    | Player[] | 4   | A list of players who won the match.                           |
 
-- **Example:**
+{{< /table >}}
 
-```json
-{"player":{"name":"Dresav","teamId":5,"pos":{"x":41305.1,"y":10671.5,"z":7405.44},"angles":{"x":0,"y":104.484,"z":0},"teamName":"Razer","squadIndex":0,"nucleusHash":"742914e6251d6d5eba1edc86078773ab4e89f95201a8036abdafcb2075b0279e81f0c48c399306c3a9cbab02b96bfdc7a151aa9dbd2578b3ae9d62d9d81b1b8c","character":"Gibraltar","skin":"GoldenGuardian"},"statName":"kills","newValue":4,"timestamp":1648604082,"category":"playerStatChanged"},
-```
+### RingStartClosing
+
+Fired whenever the ring begins moving in a match.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name     | Type   | Tag | Description                                                     |
+|----------------|--------|-----|-----------------------------------------------------------------|
+| `timestamp`      | uint64 | 1   | The timestamp when the ring started closing.                    |
+| `category`       | string | 2   | The category of the event, e.g., "ring_start_closing".          |
+| `stage`          | uint32 | 3   | The current stage of the ring closing.                          |
+| `center`         | Vector3| 4   | The center point of the ring.                                   |
+| `currentRadius`  | float  | 5   | The current radius of the ring.                                 |
+| `endRadius`      | float  | 6   | The radius of the ring at the end of the closing phase.         |
+| `shrinkDuration` | float  | 7   | The duration of time for the ring to finish closing.            |
+
+{{< /table >}}
+
+### RingFinishedClosing
+
+Used when the ring has finished moving and prior to it moving again.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name     | Type    | Tag | Description                                                        |
+|----------------|---------|-----|--------------------------------------------------------------------|
+| `timestamp`      | uint64  | 1   | The timestamp when the ring finished closing.                      |
+| `category`       | string  | 2   | The category of the event, e.g., "ring_finished_closing".          |
+| `stage`          | uint32  | 3   | The stage of the match when the ring finished closing.             |
+| `center`         | Vector3 | 4   | The center point of the ring after it has finished closing.        |
+| `currentRadius`  | float   | 5   | The current radius of the ring after it has finished closing.      |
+| `shrinkDuration` | float   | 7   | The duration of time until the ring starts moving again.           |
+
+{{< /table >}}
+
+### PlayerConnected
+
+Used when a player has connected to the match.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name | Type    | Tag | Description                                         |
+|------------|---------|-----|-----------------------------------------------------|
+| `timestamp`  | uint64  | 1   | The timestamp when the player connected.            |
+| `category`   | string  | 2   | The category of the event, e.g., "player_connected".|
+| `player`     | Player  | 3   | The player who has connected to the match.          |
+
+{{< /table >}}
+
+
+### PlayerDisconnected
+
+Used when a player has disconnected, even temporarily.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name    | Type    | Tag | Description                                                             |
+|---------------|---------|-----|-------------------------------------------------------------------------|
+| `timestamp`     | uint64  | 1   | The timestamp when the player disconnected.                             |
+| `category`      | string  | 2   | The category of the event, e.g., "player_disconnected".                 |
+| `player`        | Player  | 3   | The player who has disconnected.                                        |
+| `canReconnect`  | bool    | 4   | Indicates if the player can reconnect to the match.                     |
+| `isAlive`       | bool    | 5   | Indicates if the player was alive in the game at the time of disconnect.|
+
+{{< /table >}}
+
+### PlayerStatChanged
+
+Generic event for a change in player stats.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name   | Type    | Tag | Description                                                     |
+|--------------|---------|-----|-----------------------------------------------------------------|
+| `timestamp`    | uint64  | 1   | The timestamp when the player stat changed.                     |
+| `category`     | string  | 2   | The category of the event, e.g., "player_stat_changed".         |
+| `player`       | Player  | 3   | The player whose stat has changed.                              |
+| `statName`     | string  | 4   | The name of the stat that changed.                              |
+| `newValue`     | uint32  | 5   | The new value of the stat.                                      |
+
+{{< /table >}}
+
+### PlayerUpgradeTierChanged
+{{< alert context="success" text="**Important Update**: `PlayerUpgradeTierChange`  was introduced in the Season 20 update on 2/13/2024." />}}
+
+Event used to notify when a player goes above their current tier level.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name   | Type    | Tag | Description                                                       |
+|--------------|---------|-----|-------------------------------------------------------------------|
+| `timestamp`    | uint64  | 1   | The timestamp when the player's upgrade tier changed.             |
+| `category`     | string  | 2   | The category of the event, e.g., "player_upgrade_tier_changed".   |
+| `player`       | Player  | 3   | The player whose upgrade tier has changed.                        |
+| `level`        | int32   | 4   | The new level of the player after the upgrade tier change.        |
+
+{{< /table >}}
+
+
 
