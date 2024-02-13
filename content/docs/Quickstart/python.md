@@ -15,7 +15,7 @@ tags: ["Beginners"]
 
 This guide provides a comprehensive introduction to using Apex Legends' LiveAPI 2.0 with Python, aimed at developers interested in building applications that interact with Apex Legends data in real-time. 
 
-{{< alert context="info" text="This documentation is a work in progress, and we actively welcome contributions. If you have suggestions for improvements or new features, feel free to open a pull request on our GitHub repository. [Contribute here](https://www.github.com/zeejayym/liveapi-documentation). We appreciate your input in making our documentation better for everyone." />}}
+{{< alert context="info" text="This documentation is a work in progress, and we actively welcome contributions. If you have suggestions for improvements or new features, feel free to open a pull request on our GitHub repository. [Contribute here](https://www.github.com/zeejayym/apex-liveapi-documentation). We appreciate your input in making our documentation better for everyone." />}}
 
 ## Requirements
 
