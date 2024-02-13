@@ -38,5 +38,5 @@ enableGitInfo = true
     copyright = "Built by zeejayym. Not affiliated with EA or Respawn Entertainment. Powered by Hugo and lotusdocs."
 
 [params.social]
-    github = "zeejayym"
+    github = "zeejayym/apex-liveapi-documentation"
     twitter = "zeejayym"
