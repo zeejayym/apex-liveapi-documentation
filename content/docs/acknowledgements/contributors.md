@@ -17,5 +17,5 @@ This project is the result of hard work, passion, and dedication. From the botto
 
 ### Thank you, 
 
-- [**Greeny**](https://github.com/RanomPanda) - Contributor
+- [**greeny**](https://github.com/RanomPanda) - Contributor
 - **Gabe** - Contributor
