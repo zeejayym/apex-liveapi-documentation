@@ -31,7 +31,6 @@ Event describing a player taking damage. Details include the attacker, victim, t
 {{< /table >}}
 
 ### PlayerKilled
-{{< alert context="warning" text="**WARNING:** `PlayerKilled.awardedTo` is now `reserved` as of Season 20 update on 2/13/2024." />}}
 
 Sent when a player is killed. Details are similar to the PlayerDamaged event.
 {{< table "table-striped-columns" >}}
@@ -42,7 +41,7 @@ Sent when a player is killed. Details are similar to the PlayerDamaged event.
 | `category`  | string | 2   | The category of the event, e.g., "player_killed". |
 | `attacker`  | Player | 3   | The player who killed the victim.              |
 | `victim`    | Player | 4   | The player who was killed.                     |
-| `reserved`    |  | 5   |  formerly Player `awardedTo`           |
+| `awardedTo` | Player | 5   |  The `awardedTo` field describes the player that the kill is given to |
 | `weapon`    | string | 6   | The weapon used to kill the player.            |
 
 {{< /table >}}
