@@ -36,7 +36,7 @@ googleAnalytics = "G-SG0772B69Q"
 
 
 [params.footer]
-    copyright = "Built by zeejayym. Not affiliated with EA or Respawn Entertainment. Powered by Hugo and lotusdocs."
+    copyright = "Built by zeejayym. Not affiliated with EA or Respawn Entertainment. Powered by Go and lotusdocs."
 
 [params.social]
     github = "zeejayym/apex-liveapi-documentation"
