@@ -134,12 +134,14 @@ To enable the LiveAPI for Apex Legends, you need to configure the game's launch 
 
 {{< /tabs >}}
 
+
 The necessary command line to activate the LiveAPI and connect it to your app is:
 
 ```arduino
 +cl_liveapi_enabled 1 +cl_liveapi_ws_servers "ws://127.0.0.1:7777"
 ```
 
+### LiveAPI Command Line Parameters
 Some of the following command line parameters can be passed into the game:
 
 {{< table "table-striped-columns" >}}
@@ -149,7 +151,7 @@ Some of the following command line parameters can be passed into the game:
 | `cl_liveapi_enabled`          | "0"  | Enable Live API functionality.                                  |
 | `cl_liveapi_allow_requests`   | "1"  | Allow processing and running any incoming requests.            |
 | `cl_liveapi_pretty_print_log` | "0"  | Makes the JSON output more human-readable.                     |
-| `cl_liveapi_use_protobuf`     | "1"  |  Use protobuf as the serialization format. Otherwise, JSON.    |
+| `cl_liveapi_use_protobuf`     | "1"  | Use protobuf as the serialization format. Otherwise, JSON.    |
 | `cl_liveapi_ws_keepalive`     | "30" | Interval of time to send Pong to any connected server.         |
 | `cl_liveapi_ws_retry_count`   | "5"  | Amount of times to retry connecting before marking the connection as unavailable. |
 | `cl_liveapi_ws_retry_time`    | "30" | Time between retries.                                          |
@@ -163,7 +165,6 @@ Some of the following command line parameters can be passed into the game:
 
 {{< /table >}}
 
-{{< alert context="info" text="Note: This tells the game to enable the LiveAPI and connect to a WebSocket server running on the same machine at port 7777." />}}
 
 
 
