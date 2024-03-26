@@ -142,7 +142,9 @@ The necessary command line to activate the LiveAPI and connect it to your app is
 ```
 
 ### LiveAPI Command Line Parameters
-Some of the following command line parameters can be passed into the game:
+Command line parameters can be passed into the game. A sample config file is in `LiveAPI/config.json`. To use it, place it in `%USERPROFILE%/Saved Games/Respawn/Apex/assets/temp/live_api`.
+
+{{< alert context="warning" text="**Careful:** If you use `cl_liveapi_ws_servers` with the provided sample `LiveAPI/config.json` in the LiveAPI folder, you may unintentionally create duplicate addresses. To avoid this, either remove the Command Line Parameter `+cl_liveapi_ws_servers 'ws://127.0.0.1:7777'` or comment out the servers list in the `config.json`." />}}
 
 {{< table "table-striped-columns" >}}
 
@@ -155,13 +157,13 @@ Some of the following command line parameters can be passed into the game:
 | `cl_liveapi_ws_keepalive`     | "30" | Interval of time to send Pong to any connected server.         |
 | `cl_liveapi_ws_retry_count`   | "5"  | Amount of times to retry connecting before marking the connection as unavailable. |
 | `cl_liveapi_ws_retry_time`    | "30" | Time between retries.                                          |
-| `cl_liveapi_ws_servers`       | ""   | Comma separated list of addresses to connect to. Must be in the form 'ws://domain.com:portNum'. |
+| `cl_liveapi_ws_servers`       | N/A  | Comma separated list of addresses to connect to. Must be in the form `ws://domain.com:portNum`. |
 | `cl_liveapi_ws_timeout`       | "300" | Websocket connection timeout in seconds.                      |
 | `cl_liveapi_ws_lax_ssl`       | "1"   | Skip SSL certificate validation for all WSS connections. Allows the use of self-signed certificates. |
-| `cl_liveapi_ws_event_delay`   | ""    | Delay (in seconds) to be used when broadcasting an event to all connections. |
-| `cl_liveapi_requests_psk`     | ""    | A preshared key that will be used to validate requests. When set, if a request is received with a key that does not match, it is rejected. |
+| `cl_liveapi_ws_event_delay`   | N/A   | Delay (in seconds) to be used when broadcasting an event to all connections. |
+| `cl_liveapi_requests_psk`     | N/A   | A preshared key that will be used to validate requests. When set, if a request is received with a key that does not match, it is rejected. |
 | `cl_liveapi_requests_psk_tries` | "10" | Attempts allowed when making a request with the wrong key before the connection is dropped. It will always be minimum 10 tries. |
-| `cl_liveapi_session_name`       | ""  | Session name that can be used in WebSocket connections to identify this client. |
+| `cl_liveapi_session_name`       | N/A | Session name that can be used in WebSocket connections to identify this client. |
 
 {{< /table >}}
 
@@ -173,7 +175,7 @@ Some of the following command line parameters can be passed into the game:
 
 Before you can generate the protobuf bindings needed to work with Apex Legends' LiveAPI events in Python, you must have the Protocol Buffers Compiler (`protoc`) installed on your development machine.
 
-{{< alert context="info" text="Note: `protoc` is used to compile `.proto` files into language-specific bindings, enabling your applications to work with structured data defined in protobuf format." />}}
+{{< alert context="info" text="**Note:** `protoc` is used to compile `.proto` files into language-specific bindings, enabling your applications to work with structured data defined in protobuf format." />}}
 
 - Download the latest version of [protoc](https://protobuf.dev/downloads/) for your operating system. 
 
