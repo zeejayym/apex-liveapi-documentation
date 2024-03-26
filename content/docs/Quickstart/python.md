@@ -140,6 +140,29 @@ The necessary command line to activate the LiveAPI and connect it to your app is
 +cl_liveapi_enabled 1 +cl_liveapi_ws_servers "ws://127.0.0.1:7777"
 ```
 
+Some of the following command line parameters can be passed into the game:
+
+{{< table "table-striped-columns" >}}
+
+| Parameter      | Default | Description                                                   |
+|-----------------|---------|---------------------------------------------------------------|
+| `cl_liveapi_enabled`          | "0"  | Enable Live API functionality.                                  |
+| `cl_liveapi_allow_requests`   | "1"  | Allow processing and running any incoming requests.            |
+| `cl_liveapi_pretty_print_log` | "0"  | Makes the JSON output more human-readable.                     |
+| `cl_liveapi_use_protobuf`     | "1"  |  Use protobuf as the serialization format. Otherwise, JSON.    |
+| `cl_liveapi_ws_keepalive`     | "30" | Interval of time to send Pong to any connected server.         |
+| `cl_liveapi_ws_retry_count`   | "5"  | Amount of times to retry connecting before marking the connection as unavailable. |
+| `cl_liveapi_ws_retry_time`    | "30" | Time between retries.                                          |
+| `cl_liveapi_ws_servers`       | ""   | Comma separated list of addresses to connect to. Must be in the form 'ws://domain.com:portNum'. |
+| `cl_liveapi_ws_timeout`       | "300" | Websocket connection timeout in seconds.                      |
+| `cl_liveapi_ws_lax_ssl`       | "1"   | Skip SSL certificate validation for all WSS connections. Allows the use of self-signed certificates. |
+| `cl_liveapi_ws_event_delay`   | ""    | Delay (in seconds) to be used when broadcasting an event to all connections. |
+| `cl_liveapi_requests_psk`     | ""    | A preshared key that will be used to validate requests. When set, if a request is received with a key that does not match, it is rejected. |
+| `cl_liveapi_requests_psk_tries` | "10" | Attempts allowed when making a request with the wrong key before the connection is dropped. It will always be minimum 10 tries. |
+| `cl_liveapi_session_name`       | ""  | Session name that can be used in WebSocket connections to identify this client. |
+
+{{< /table >}}
+
 {{< alert context="info" text="Note: This tells the game to enable the LiveAPI and connect to a WebSocket server running on the same machine at port 7777." />}}
 
 
