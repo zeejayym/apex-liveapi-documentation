@@ -140,7 +140,7 @@ Response to the `CustomMatch_GetLobbyPlayers`, contains the list of all players 
 
 | Field Name   | Type                         | Tag | Description                                                          |
 |--------------|------------------------------|-----|----------------------------------------------------------------------|
-| `playerToken`  | string                       | 1   | A token uniquely identifying the player.                             |
+| `playerToken`  | string                       | 1   | Custom match lobby join code.                             |
 | `players`      | CustomMatch_LobbyPlayer[]    | 2   | A list of `CustomMatch_LobbyPlayer` representing all players in the lobby. |
 
 {{< /table >}}
