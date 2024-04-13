@@ -15,7 +15,7 @@ Follow these instructions to set up a local development environment and contribu
 1. **Clone the Repository:**
 
    ```bash
-   git clone --depth 1 https://github.com/YourGitHubUsername/liveapi-documentation liveapi-documentation
+   git clone --depth 1 https://github.com/YourGitHubUsername/apex-liveapi-documentation liveapi-documentation
    cd liveapi-documentation
    ```
 
@@ -44,7 +44,7 @@ We welcome contributions to the LiveAPI Documentation! To contribute:
 2. **Clone Your Fork:**
 
    ```bash
-   git clone https://github.com/YourUsername/liveapi-documentation
+   git clone https://github.com/YourUsername/apex-liveapi-documentation
    cd liveapi-documentation
    ```
 3. **Add the Custom Lotus Submodule:**

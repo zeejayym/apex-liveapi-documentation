@@ -13,7 +13,7 @@ weight: 240
 
 ## Messages
 
-### observerSwitched
+### ObserverSwitched
 
 Event when the observer camera switches from viewing one player to another
 

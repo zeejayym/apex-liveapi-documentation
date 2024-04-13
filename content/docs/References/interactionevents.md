@@ -44,6 +44,22 @@ Occurs when a player finishes assisting a downed player.
 
 ### ArenasItemSelected
 
+Specific Arenas-only event that occurs when players select an item.
+
+{{< table "table-striped-columns" >}}
+
+| Field Name  | Type    | Tag | Description                                                 |
+|-------------|---------|-----|-------------------------------------------------------------|
+| `timestamp` | uint64  | 1   | The timestamp when the item was selected.                 |
+| `category`  | string  | 2   | The category of the event, e.g., "arenas_item_selected".  |
+| `player`    | Player  | 3   | The player who selected the item.                         |
+| `item`      | string  | 4   | The item selected.                                        |
+| `quantity`  | int32   | 5   | The quantity of the item selected.                        |
+
+{{< /table >}}
+
+### ArenasItemDeselected
+
 Specific Arenas-only event that occurs when players deselect an item.
 
 {{< table "table-striped-columns" >}}
