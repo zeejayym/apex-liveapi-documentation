@@ -19,7 +19,7 @@ This project is the result of hard work, passion, and dedication. From the botto
 
 - [**greeny**](https://github.com/RanomPanda) - Contributor
 - [**Slauka**](https://twitter.com/slaukie) - Tester
-- [**Spider**](https://github.com/StrongSpider) - Contributor
+- [**spiider**](https://github.com/StrongSpider) - Contributor
 - **Gabe** - Contributor
 - **Garrett** - Tester
 - **Kohl** - Contributor

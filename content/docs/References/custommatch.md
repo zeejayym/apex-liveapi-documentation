@@ -17,6 +17,7 @@ weight: 210
 
 Request to change the observer camera. Be aware of server conditions affecting request fulfillment.
 
+{{< alert context="info" text="For more information, consult the Protobuf documentation for your language of choice and look at details regarding the `oneof` field (https://protobuf.dev/programming-guides/proto3/#oneof)" />}}
 
 {{< table "table-striped-columns" >}}
 

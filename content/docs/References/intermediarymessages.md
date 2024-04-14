@@ -145,3 +145,13 @@ Response to the `CustomMatch_GetLobbyPlayers`, contains the list of all players 
 
 {{< /table >}}
 
+## RequestStatus
+Message used to indicate the status of a request. Generally, it is used to provide a plain text, detailed response in case of failures or problems
+
+{{< table "table-striped-columns" >}}
+
+| Field Name   | Type                         | Tag | Description                                                          |
+|--------------|------------------------------|-----|----------------------------------------------------------------------|
+| `status`     | string                       | 1   | A detailed response of a `Request` message.                          |
+
+{{< /table >}}
