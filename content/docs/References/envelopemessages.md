@@ -1,11 +1,22 @@
+---
+title: "EnvelopeMessages"
+description: ""
+icon: "code"
+date: "2024-04-14T00:44:31+01:00"
+lastmod: "2024-04-14T00:44:31+01:00"
+draft: false
+toc: true
+weight: 210
+---
+
 {{< alert context="info" text="This documentation is a work in progress, and we actively welcome contributions. If you have suggestions for improvements or new features, feel free to open a pull request on our GitHub repository. [Contribute here](https://www.github.com/zeejayym/apex-liveapi-documentation). We appreciate your input in making our documentation better for everyone." />}}
 
 ## Messages
 
-Messages that contain/envelope other game messages.
-
 ### Request
-Envelope message for any Live API request. This allows a single uniform data structure for requests to be made and for the game to receive them. Specifically, there is only one possible action per request. You can request an acknowledgement of your request by setting `withAck` to true. Acknowledgements will come in the form of a Response message. More information can be found with that event.
+Envelope message for any Live API request. This allows a single uniform data structure for requests to be made and for the game to receive them. Specifically, there is only one possible action per request. You can request an acknowledgement of your request by setting `withAck` to `true`. 
+
+Acknowledgements will come in the form of a Response message. More information can be found with that event.
 
 A single example to create a `CustomMatch_JoinLobby` request in python is as follows:
 ```python
@@ -65,9 +76,9 @@ Use [protobuf.dev's](https://protobuf.dev/reference/protobuf/google.protobuf/#an
 {{< /table >}}
 
 ### Response
-Message used to indicate the response to a request made to the API. Only the requesting part will receive this message and this message is only sent if the request required an acknowledgement by setting `withAck` to true in the Request object. This message is always sent within a `LiveAPIEvent` and never on its own to allow any applications to have a uniform method of reading events over the wire.
+Message used to indicate the response to a request made to the API. Only the requesting part will receive this message and this message is only sent if the request required an acknowledgement by setting `withAck` to `true` in the Request object. This message is always sent within a `LiveAPIEvent` and never on its own to allow any applications to have a uniform method of reading events over the wire.
 
-{{< alert context="warning" text="If `success` is true, it does not mean that the Request has finished or that it was completed correctly. In this case, it means that it was successfully received and contains no issues (it is a well-formed request)." />}}
+{{< alert context="warning" text="If `success` is `true`, it does not mean that the Request has finished or that it was completed correctly. In this case, it means that it was successfully received and contains no issues (it is a well-formed request)." />}}
 
 {{< table "table-striped-columns" >}}
 
@@ -81,11 +92,16 @@ Message used to indicate the response to a request made to the API. Only the req
 ### LiveAPIEvent
 Envelope for all LiveAPI Events. Any game events or responses to requests will be sent using this message. The specific event or message is stored in the `gameMessage` field.
 
-In order to read the message successfully, check the type contained in `gameMessage` and create an instance of that type where you can unpack the data to Protobuf has several ways of doing type to instance lookups that will allow you to do this after you've generated bindings. For example, to read and unpack any LiveAPIEvent in Python, the following can be done (assume `pb_msg` contains the LiveAPIEvent object):
-```python
+In order to read the message successfully, check the type contained in `gameMessage` and create an instance of that type where you can unpack the data to Protobuf has several ways of doing type to instance lookups that will allow you to do this after you've generated bindings. 
+
+For example, to read and unpack any LiveAPIEvent in Python, the following can be done (assume `pb_msg` contains the LiveAPIEvent object):
+
+```py
 from events_pb2 import *
 from google.protobuf import symbol_database
+
 [ ... ]
+
 result_type = pb_msg.gameMessage.TypeName()
 msg_result = symbol_database.Default().GetSymbol(result_type)()
 pb_msg.gameMessage.Unpack(msg_result) # msg_result now holds the actual event you want to read
